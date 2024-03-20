@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { Empleado } from './empleado.model';
 import { NgFor } from '@angular/common';
 import { EmpleadoHijoCComponent } from './empleado-hijo-c/empleado-hijo-c.component';
+import { ConfirmarServiceService } from './confirmar-service.service';
+import { EmpleadosService } from './empleados.service';
 
 @Component({
   selector: 'app-root',
@@ -12,21 +14,26 @@ import { EmpleadoHijoCComponent } from './empleado-hijo-c/empleado-hijo-c.compon
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   titulo = 'Listado de empleados';
-  empleados:Empleado[] = [
-    new Empleado("Juan", "Díaz", "Presidente", 7500),
-    new Empleado("Ana", "Martín", "Directora", 5500),
-    new Empleado("María", "Fernández", "Jefa sección", 3500),
-    new Empleado("Laura", "López", "Administrativo", 4500),
-  ]
-  cuadroNombre:string = "";
-  cuadroApellido:string = "";
-  cuadroCargo:string = "";
-  cuadroSalario:number = 0;
+  
+  cuadroNombre: string = "";
+  cuadroApellido: string = "";
+  cuadroCargo: string = "";
+  cuadroSalario: number = 0;
+  empleados: Empleado[] = [];
+
+  constructor(/*private confirmarServicio: ConfirmarServiceService,*/ private empleadosService: EmpleadosService){
+    //this.empleados = this.empleadosService.empleados;
+  }
+  ngOnInit(): void {
+    this.empleados = this.empleadosService.empleados;
+    throw new Error('Method not implemented.');
+  }
 
   agregarEmpleado(){
     let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
-    this.empleados.push(miEmpleado);
+    //this.confirmarServicio.abrirVentana(`Nombre del empleado: ${miEmpleado.nombre}`);
+    this.empleadosService.agregarEmpleadoService(miEmpleado);
   }
 }
