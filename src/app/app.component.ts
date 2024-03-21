@@ -1,39 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
-import { Empleado } from './empleado.model';
-import { NgFor } from '@angular/common';
-import { EmpleadoHijoCComponent } from './empleado-hijo-c/empleado-hijo-c.component';
-import { ConfirmarServiceService } from './confirmar-service.service';
-import { EmpleadosService } from './empleados.service';
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { ProyectosComponent } from './proyectos/proyectos.component';
+import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
+import { ContactoComponent } from './contacto/contacto.component';
+import { UpdateEmpleadoComponent } from './update-empleado/update-empleado.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, NgFor, EmpleadoHijoCComponent],
+  imports: [RouterOutlet,RouterLink, HomeComponent, ProyectosComponent, QuienesSomosComponent, ContactoComponent, UpdateEmpleadoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
-  titulo = 'Listado de empleados';
-  
-  cuadroNombre: string = "";
-  cuadroApellido: string = "";
-  cuadroCargo: string = "";
-  cuadroSalario: number = 0;
-  empleados: Empleado[] = [];
+export class AppComponent{
 
-  constructor(/*private confirmarServicio: ConfirmarServiceService,*/ private empleadosService: EmpleadosService){
-    //this.empleados = this.empleadosService.empleados;
-  }
-  ngOnInit(): void {
-    this.empleados = this.empleadosService.empleados;
-    throw new Error('Method not implemented.');
-  }
-
-  agregarEmpleado(){
-    let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
-    //this.confirmarServicio.abrirVentana(`Nombre del empleado: ${miEmpleado.nombre}`);
-    this.empleadosService.agregarEmpleadoService(miEmpleado);
-  }
 }

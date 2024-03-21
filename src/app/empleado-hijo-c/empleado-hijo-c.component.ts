@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { Empleado } from '../empleado.model';
 import { CaracteristicasEmpleadoCComponent } from '../caracteristicas-empleado-c/caracteristicas-empleado-c.component';
 import { NgFor } from '@angular/common';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-empleado-hijo-c',
   standalone: true,
-  imports: [CaracteristicasEmpleadoCComponent, NgFor],
+  imports: [RouterOutlet, RouterLink, CaracteristicasEmpleadoCComponent, NgFor],
   templateUrl: './empleado-hijo-c.component.html',
   styleUrl: './empleado-hijo-c.component.css'
 })

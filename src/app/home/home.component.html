@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="col" style="text-align: center;"><h1>{{titulo}}</h1></div>
+    <br><br>
+</div>
+<br><br><br>
+<app-empleado-hijo-c *ngFor="let empleado of empleados; let i=index" [empleadoDeLista]="empleado" [indice]="i"></app-empleado-hijo-c>
+

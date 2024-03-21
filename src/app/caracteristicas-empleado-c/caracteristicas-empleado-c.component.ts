@@ -11,10 +11,10 @@ import { ConfirmarServiceService } from '../confirmar-service.service';
 export class CaracteristicasEmpleadoCComponent {
   @Output() caracteristicasEmpleados = new EventEmitter<string>();
 
-  //constructor(private confirmarServicio: ConfirmarServiceService){}
+  constructor(private confirmarServicio: ConfirmarServiceService){}
   
   agregaCaracteristicas(value: string) {
     //this.confirmarServicio.abrirVentana(value)
-    //this.caracteristicasEmpleados.emit(value);
+    this.caracteristicasEmpleados.emit(value);
   }
 }

@@ -17,4 +17,21 @@ export class EmpleadosService {
     this.servicioConfirmar.abrirVentana(`Persona que se va a agregar \n${empleado.nombre}\nSalario: ${empleado.salario}`);
     this.empleados.push(empleado);
   }
+
+  encontrarEmpleado(indice: number): Empleado {
+    let empleado : Empleado = this.empleados[indice];
+    return empleado;
+  }
+
+  actualizarEmpleado(empleado: Empleado, indice: number){
+    let empleadoActualizado: Empleado = this.empleados[indice]
+    empleadoActualizado.nombre = empleado.nombre;
+    empleadoActualizado.apellido = empleado.apellido;
+    empleadoActualizado.cargo = empleado.cargo;
+    empleadoActualizado.salario = empleado.salario;
+  }
+
+  eliminarEmpleado(indice: number){
+    this.empleados.splice(indice, 1);
+  }
 }
