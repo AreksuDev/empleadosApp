@@ -5,6 +5,7 @@ import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { UpdateEmpleadoComponent } from './update-empleado/update-empleado.component';
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path: 'quienesSomos', component: QuienesSomosComponent},
     {path: 'contacto', component: ContactoComponent},
     {path: 'actualizarEmpleado/:id', component: UpdateEmpleadoComponent},
+    {path: 'login', component: LoginComponent},
     
     {path: '**', component: ErrorPersonalizadoComponent}
 ];
